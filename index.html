@@ -76,6 +76,16 @@ padding: 16px;
   </main>
 </body>
 <script>
+  const botoes = document.querySelectorAll('.btn-curtida');
+
+    botoes.forEach(botao => {
+      botao.addEventListener('click', () => {
+        const contador = botao.querySelector('span');
+        let valorAtual = parseInt(contador.textContent, 10);
+        contador.textContent = valorAtual + 1;
+      });
+    });
+  
   botoes.forEach(function (botao) {
 let curtiu = false;
 
