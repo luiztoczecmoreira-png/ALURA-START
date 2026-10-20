@@ -209,5 +209,63 @@
             </div>
         </div>
     </main>
+    <script>
+    document.querySelectorAll(".post").forEach(post => {
+        const likeBtn = post.querySelector(".btn-like");
+        const dislikeBtn = post.querySelector(".btn-dislike");
+
+        const likeCount = likeBtn.querySelector("span");
+        const dislikeCount = dislikeBtn.querySelector("span");
+
+        let reaction = null;
+        let likes = 0;
+        let dislikes = 0;
+
+        likeBtn.addEventListener("click", () => {
+            if (reaction === "like") {
+                likes--;
+                reaction = null;
+            } else {
+                if (reaction === "dislike") {
+                    dislikes--;
+                }
+
+                likes++;
+                reaction = "like";
+            }
+
+            updateButtons();
+        });
+
+        dislikeBtn.addEventListener("click", () => {
+            if (reaction === "dislike") {
+                dislikes--;
+                reaction = null;
+            } else {
+                if (reaction === "like") {
+                    likes--;
+                }
+
+                dislikes++;
+                reaction = "dislike";
+            }
+
+            updateButtons();
+        });
+
+        function updateButtons() {
+            likeCount.textContent = likes;
+            dislikeCount.textContent = dislikes;
+
+            likeBtn.style.opacity =
+                reaction === "like" ? "1" : "0.75";
+
+            dislikeBtn.style.opacity =
+                reaction === "dislike" ? "1" : "0.75";
+        }
+    });
+</script>
+</body>
+</html>
 </body>
 </html>
